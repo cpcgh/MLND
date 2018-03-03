@@ -43,7 +43,22 @@ def train_and_predict(clf):
     from sklearn.metrics import accuracy_score
     acc = accuracy_score(pred, labels_test)
     print "Accuracy: ", acc
-#########################################################
+
+    print "10: ", pred[10]   #1
+    print "26: ", pred[26]   #0
+    print "50: ", pred[50]   #1
+
+    # Calculate how many emails are from Chris
+    chris_count = 0
+    for item in pred:
+        if item == 1:
+            chris_count += 1
+
+    print "Total size of test set: ", len(pred)
+    print "Chris emails count: ", chris_count
+    print "Sara emails count: ", len(pred) - chris_count
+
+
 
 
 # train_and_predict(SVC(C=10, kernel="rbf"))
@@ -52,6 +67,7 @@ def train_and_predict(clf):
 train_and_predict(SVC(C=10000, kernel="rbf"))
 
 
+#########################################################
 
 ########### Output ############
 ### Original option
@@ -92,3 +108,7 @@ train_and_predict(SVC(C=10000, kernel="rbf"))
 # SVM predction duration:  0.810650110245
 # Accuracy:  0.892491467577
 ### Use full training set
+############# Kernel= rbf , C= 10000
+# SVM training duration:  108.991676092
+# SVM predction duration:  10.6796779633
+# Accuracy:  0.990898748578
