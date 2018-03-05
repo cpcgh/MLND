@@ -56,7 +56,7 @@ def train_and_predict(clf):
 
     print "Total size of test set: ", len(pred)
     print "Chris emails count: ", chris_count
-    print "Sara emails count: ", len(pred) - chris_count
+    print "Sara emails count: ",     len(pred) - chris_count
 
 
 
