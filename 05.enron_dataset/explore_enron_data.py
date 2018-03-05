@@ -25,6 +25,8 @@ print "Size of dataset: ", len(enron_data)
 poi_count = 0
 quantified_salary_employees_count = 0
 known_email_address_count = 0
+people_without_total_payment_count = 0
+poi_without_total_payment_count = 0
 
 for person in enron_data:
     print "Name: ", person
@@ -39,6 +41,11 @@ for person in enron_data:
     if enron_data[person]['email_address'] != "NaN":
         known_email_address_count += 1
 
+    if enron_data[person]['total_payments'] == "NaN":
+        people_without_total_payment_count += 1
+        if 1 == enron_data[person]['poi']:
+            poi_without_total_payment_count += 1
+
 print "Number of POI: ", poi_count
 print "Stock value of James Prentice: ", enron_data["PRENTICE JAMES"]["total_stock_value"]
 print "POI emails to Wesley Colwell: ", enron_data["COLWELL WESLEY"]["from_this_person_to_poi"]
@@ -51,3 +58,7 @@ print "total_payments of LAY KENNETH L: ", enron_data["LAY KENNETH L"]["total_pa
 
 print "quantified_salary_employees_count: ", quantified_salary_employees_count
 print "known_email_address_count: ", known_email_address_count
+print "people_without_total_payment_count: ", people_without_total_payment_count
+print "people_without_total_payment_percentage: ", 1.0 * people_without_total_payment_count / len(enron_data)
+print "poi_without_total_payment_count: ", poi_without_total_payment_count
+print "poi_without_total_payment_percentage: ", 1.0 * poi_without_total_payment_count / poi_count
